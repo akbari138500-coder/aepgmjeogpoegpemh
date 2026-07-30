@@ -22,7 +22,7 @@ export const sampleCases = [
       { step: 5, title: 'آبچوریشن', description: 'پر کردن کانال‌ها با گوتاپرکا و سیلر به روش تراکم جانبی یا عمودی.' }
     ],
     keyPoints: ['شناسایی آناتومی کانال MB2 در مولر اول فک بالا بسیار حیاتی است.', 'اهمیت شستشوی فراوان کانال‌ها با هیپوکلریت سدیم.'],
-    references: ['Cohen\\'s Pathways of the Pulp, 12th Ed']
+    references: ["Cohen's Pathways of the Pulp, 12th Ed"]
   },
   {
     id: 'case-2',
@@ -71,7 +71,7 @@ export const sampleCases = [
       { step: 4, title: 'فاز نگهداری', description: 'قرار دادن بیمار در فاز درمانی نگهدارنده هر ۳ تا ۴ ماه.' }
     ],
     keyPoints: ['کنترل فاکتورهای خطر مانند سیگار کشیدن در موفقیت درمان پریودنتال نقش حیاتی دارد.', 'همکاری بیمار در رعایت بهداشت دهان مهم‌ترین عامل پیش‌آگهی است.'],
-    references: ['Carranza\\'s Clinical Periodontology, 13th Ed']
+    references: ["Carranza's Clinical Periodontology, 13th Ed"]
   },
   {
     id: 'case-4',
