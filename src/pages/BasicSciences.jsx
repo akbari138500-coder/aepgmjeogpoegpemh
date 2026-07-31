@@ -1,112 +1,109 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { subjects } from '../data/subjects';
 import { toPersianNumber } from '../utils/helpers';
 
-export default function BasicSciences() {
-  const [searchTerm, setSearchTerm] = useState('');
+const BasicSciences = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredSubjects, setFilteredSubjects] = useState(subjects);
 
-  const filteredSubjects = subjects.filter(subject => 
-    subject.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (subject.description && subject.description.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const revealElements = document.querySelectorAll('.reveal, .fade-up');
+    revealElements.forEach((el) => observer.observe(el));
+
+    return () => {
+      revealElements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
+  useEffect(() => {
+    if (searchQuery.trim() === '') {
+      setFilteredSubjects(subjects);
+    } else {
+      const lowerQuery = searchQuery.toLowerCase();
+      setFilteredSubjects(
+        subjects.filter((s) => 
+          s.name.toLowerCase().includes(lowerQuery) || 
+          s.description.toLowerCase().includes(lowerQuery)
+        )
+      );
+    }
+  }, [searchQuery]);
 
   return (
-    <div className="container page-content" style={{ padding: '2rem 1rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <header className="page-header" style={{ marginBottom: '3rem', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '2.5rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>آزمون علوم پایه</h1>
-        <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)' }}>
-          درس مورد نظر خود را انتخاب کنید و آزمون را شروع کنید
-        </p>
-      </header>
+    <div className="page page-content">
+      <div className="container">
+        <div className="section-header reveal text-center">
+          <h1 className="section-header__title">علوم پایه دندانپزشکی</h1>
+          <p className="section-header__desc">گنجینه‌ای از سوالات و درسنامه‌های جامع برای آمادگی در آزمون علوم پایه</p>
+        </div>
 
-      <div className="search-section" style={{ marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
-        <input
-          type="text"
-          placeholder="جستجوی درس... (مثلاً آناتومی)"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            width: '100%',
-            padding: '1rem 1.5rem',
-            borderRadius: '50px',
-            border: '2px solid var(--border-color)',
-            fontSize: '1.1rem',
-            outline: 'none',
-            transition: 'border-color 0.3s',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.05)'
-          }}
-          className="search-input"
-        />
-      </div>
+        <div className="search-bar reveal">
+          <svg className="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input 
+            type="text" 
+            className="search-bar__input" 
+            placeholder="جستجوی درس یا مبحث..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
 
-      <div className="grid grid--3 stagger-group">
         {filteredSubjects.length > 0 ? (
-          filteredSubjects.map((subject, index) => (
-            <Link 
-              to={`/basic-sciences/${subject.id}`} 
-              key={subject.id} 
-              className="card subject-card stagger-item" 
-              style={{ 
-                textDecoration: 'none', 
-                color: 'inherit',
-                display: 'block',
-                padding: '2rem',
-                borderRadius: '20px',
-                transition: 'transform 0.3s, box-shadow 0.3s',
-                animationDelay: `${index * 0.1}s`
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem' }}>
-                <div style={{ 
-                  fontSize: '2.5rem', 
-                  background: 'var(--bg-secondary)', 
-                  width: '70px', 
-                  height: '70px', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center', 
-                  borderRadius: '50%',
-                  marginLeft: '1rem'
-                }}>
-                  {subject.icon || '📘'}
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.3rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>{subject.name}</h3>
-                  <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'var(--primary)' }}></span>
-                    {toPersianNumber(subject.questionCount || 250)} سوال
-                  </div>
-                </div>
-              </div>
+          <div className="grid grid--3 stagger-group reveal mt-8">
+            {filteredSubjects.map((subject) => {
+              // Mock random progress for UI demonstration
+              const progressPercentage = Math.floor(Math.random() * 60) + 10;
               
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                {subject.description || `تست‌های طبقه‌بندی شده و جامع ${subject.name} همراه با پاسخنامه تشریحی.`}
-              </p>
-
-              <div className="progress-container">
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '0.5rem', color: 'var(--text-secondary)' }}>
-                  <span>میزان پیشرفت</span>
-                  <span>{toPersianNumber(Math.floor(Math.random() * 40) + 10)}٪</span>
-                </div>
-                <div style={{ width: '100%', height: '8px', backgroundColor: 'var(--bg-secondary)', borderRadius: '4px', overflow: 'hidden' }}>
-                  <div style={{ 
-                    height: '100%', 
-                    backgroundColor: 'var(--primary)', 
-                    width: `${Math.floor(Math.random() * 40) + 10}%`,
-                    borderRadius: '4px'
-                  }}></div>
-                </div>
-              </div>
-            </Link>
-          ))
+              return (
+                <Link to={`/basic-sciences/${subject.id}`} key={subject.id} className="subject-card stagger-item">
+                  <div className="subject-card__icon">{subject.icon}</div>
+                  <h3 className="subject-card__name">{subject.name}</h3>
+                  <p className="card__desc">{subject.description}</p>
+                  
+                  <div className="subject-card__progress">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+                      <span>پیشرفت شما</span>
+                      <span>{toPersianNumber(progressPercentage)}%</span>
+                    </div>
+                    <div style={{ height: '8px', background: 'var(--border)', borderRadius: '4px', overflow: 'hidden' }}>
+                      <div className="subject-card__progress-fill" style={{ width: `${progressPercentage}%`, height: '100%', background: 'var(--primary)', borderRadius: '4px' }}></div>
+                    </div>
+                  </div>
+                  
+                  <div className="subject-card__count text-center mt-4" style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+                    {toPersianNumber(subject.questionCount)} سوال موجود
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         ) : (
-          <div style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '4rem', color: 'var(--text-secondary)' }}>
-            <h3>هیچ درسی با این عنوان یافت نشد.</h3>
-            <p style={{ marginTop: '1rem' }}>لطفاً عبارت دیگری را جستجو کنید.</p>
+          <div className="empty-state reveal">
+            <div className="empty-state__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <h3 className="empty-state__title">نتیجه‌ای یافت نشد</h3>
+            <p className="empty-state__text">با کلمات کلیدی دیگری جستجو کنید.</p>
           </div>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default BasicSciences;

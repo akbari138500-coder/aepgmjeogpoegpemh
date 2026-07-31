@@ -1,0 +1,2 @@
+const fs = require('fs');
+console.log("To scrape thousands of questions from websites, we need to know the exact URL structure and HTML DOM format of those sites (like medofest.ir or doctorabad.com). Since these sites usually require login or are protected by captchas/cloudflare, an automated scraper script needs to be written specifically for the target site using puppeteer or similar tools. This is a complex task and usually requires user credentials.");
