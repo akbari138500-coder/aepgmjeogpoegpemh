@@ -23,8 +23,8 @@ export default function Home() {
   return (
     <div className="page">
       <section className="hero">
-        <div className="container grid grid--2">
-          <div className="hero__content reveal stagger-1">
+        <div className="hero__content">
+          <div className="hero__text reveal stagger-1">
             <div className="hero__badge">پلتفرم آموزش دندانپزشکی</div>
             <h1 className="hero__title">
               آمادگی کامل برای آزمون <span className="highlight">علوم پایه</span>

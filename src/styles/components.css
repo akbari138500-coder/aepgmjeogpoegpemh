@@ -44,7 +44,14 @@
 
 .navbar__links {
   display: flex;
+  align-items: center;
   gap: var(--space-6);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
 }
 
 .navbar__link {
@@ -96,9 +103,20 @@
   background-color: var(--border-color);
 }
 
+.navbar__mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .navbar__links, .navbar__cta {
     display: none;
+  }
+  .navbar__mobile-toggle {
+    display: flex;
   }
 }
 
