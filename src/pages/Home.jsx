@@ -52,11 +52,18 @@ export default function Home() {
             </div>
           </div>
           <div className="hero__visual reveal stagger-2">
-            <svg viewBox="0 0 300 300" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-              <rect width="300" height="300" fill="transparent" />
-              <path d="M150 50 C200 50, 230 100, 210 150 C190 200, 160 250, 150 280 C140 250, 110 200, 90 150 C70 100, 100 50, 150 50 Z" fill="none" stroke="#00ED64" strokeWidth="8" />
-              <path d="M150 50 L150 150 M110 100 L190 100" stroke="#001E2B" strokeWidth="4" />
-              <circle cx="150" cy="150" r="30" fill="#00ED64" fillOpacity="0.2" />
+            <svg viewBox="0 0 400 400" width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="400" fill="transparent" />
+              <circle cx="200" cy="200" r="150" fill="#00ED64" fillOpacity="0.05" />
+              <rect x="80" y="80" width="240" height="240" rx="40" fill="#001E2B" transform="rotate(10 200 200)" />
+              <rect x="100" y="100" width="200" height="200" rx="30" fill="#FFFFFF" />
+              <rect x="130" y="140" width="140" height="12" rx="6" fill="#E7EEEC" />
+              <rect x="130" y="170" width="100" height="12" rx="6" fill="#E7EEEC" />
+              <rect x="130" y="200" width="120" height="12" rx="6" fill="#E7EEEC" />
+              <circle cx="280" cy="110" r="24" fill="#00ED64" />
+              <rect x="100" y="260" width="100" height="40" rx="10" fill="#001E2B" />
+              <circle cx="120" cy="280" r="6" fill="#00ED64" />
+              <rect x="140" y="276" width="40" height="8" rx="4" fill="#FFFFFF" />
             </svg>
           </div>
         </div>

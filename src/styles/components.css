@@ -306,14 +306,16 @@
   background-color: var(--color-bg-card);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  border-bottom: 4px solid var(--border-color);
   transition: all 250ms var(--ease-out);
   position: relative;
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-sm);
   border-color: var(--color-primary);
+  transform: translateY(-2px);
 }
 
 .card--flat {
@@ -638,14 +640,16 @@
   padding: var(--space-5);
   background-color: var(--color-bg-card);
   border-radius: var(--radius-xl);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  border-bottom: 4px solid var(--border-color);
   transition: all 250ms var(--ease-out);
   cursor: pointer;
 }
 
 .subject-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
   border-color: var(--color-primary);
+  transform: translateY(-2px);
 }
 
 .subject-card__icon {
@@ -832,13 +836,15 @@
   background-color: var(--color-bg-card);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
+  border-bottom: 4px solid var(--border-color);
   transition: all 250ms var(--ease-out);
 }
 
 .feature-card:hover {
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-sm);
   border-color: var(--color-primary);
+  transform: translateY(-2px);
 }
 
 .feature-card__icon {
