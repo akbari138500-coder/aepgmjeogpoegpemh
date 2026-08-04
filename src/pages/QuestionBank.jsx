@@ -21,10 +21,7 @@ export default function QuestionBank() {
   useEffect(() => {
     // Mock fetching data
     const subj = getSubjectById(subjects, subjectId);
-    if (!subj) {
-      // In a real app, you might want to show a 404 or redirect
-      return;
-    }
+    if (!subj) return;
     
     setSubject(subj);
     
@@ -35,9 +32,10 @@ export default function QuestionBank() {
 
   if (!subject) {
     return (
-      <div className="container" style={{ textAlign: 'center', padding: '5rem', color: 'var(--text-secondary)' }}>
-        <h2>درس مورد نظر یافت نشد.</h2>
-        <button onClick={() => navigate('/basic-sciences')} className="btn btn--outline" style={{ marginTop: '2rem' }}>
+      <div className="container empty-state">
+        <div className="empty-state__icon">🔍</div>
+        <h2 className="empty-state__title">درس مورد نظر یافت نشد.</h2>
+        <button onClick={() => navigate('/basic-sciences')} className="btn btn--primary">
           بازگشت به لیست دروس
         </button>
       </div>
@@ -46,10 +44,11 @@ export default function QuestionBank() {
 
   if (questions.length === 0) {
     return (
-      <div className="container" style={{ textAlign: 'center', padding: '5rem', color: 'var(--text-secondary)' }}>
-        <h2>هنوز سوالی برای درس {subject.name} ثبت نشده است.</h2>
-        <p style={{ marginTop: '1rem' }}>به زودی سوالات این بخش اضافه خواهد شد.</p>
-        <button onClick={() => navigate('/basic-sciences')} className="btn btn--outline" style={{ marginTop: '2rem' }}>
+      <div className="container empty-state">
+        <div className="empty-state__icon">📚</div>
+        <h2 className="empty-state__title">هنوز سوالی برای درس {subject.name} ثبت نشده است.</h2>
+        <p className="empty-state__text">به زودی سوالات این بخش اضافه خواهد شد.</p>
+        <button onClick={() => navigate('/basic-sciences')} className="btn btn--outline" style={{ marginTop: 'var(--space-4)' }}>
           بازگشت به لیست دروس
         </button>
       </div>
@@ -61,7 +60,7 @@ export default function QuestionBank() {
   const isLastQuestion = currentIndex === questions.length - 1;
 
   const handleSelectAnswer = (optionId) => {
-    if (isAnswered) return; // Prevent changing answer after it's submitted
+    if (isAnswered) return;
     
     setSelectedAnswers(prev => ({ ...prev, [currentIndex]: optionId }));
     setShowResults(prev => ({ ...prev, [currentIndex]: true }));
@@ -122,7 +121,7 @@ export default function QuestionBank() {
   if (quizFinished) {
     const { correct, wrong, unanswered } = calculateScore();
     return (
-      <div className="container" style={{ padding: '2rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
+      <div className="container quiz-container">
         <QuizResult 
           totalQuestions={questions.length}
           correctAnswers={correct}
@@ -139,17 +138,20 @@ export default function QuestionBank() {
   const progressPercentage = ((currentIndex + 1) / questions.length) * 100;
 
   return (
-    <div className="container" style={{ padding: '2rem 1rem', maxWidth: '800px', margin: '0 auto', minHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
+    <div className="container quiz-container" style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
       
       {/* Quiz Header */}
-      <div className="quiz-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', background: 'var(--surface-color)', padding: '1rem 1.5rem', borderRadius: '15px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-          <button onClick={() => navigate('/basic-sciences')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)', fontSize: '1.2rem' }}>
-            ✕
+      <div className="quiz-header">
+        <div className="flex items-center gap-4">
+          <button onClick={() => navigate('/basic-sciences')} className="btn btn--ghost" style={{ padding: 0 }} aria-label="بستن آزمون">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
           </button>
           <div>
-            <h2 style={{ fontSize: '1.2rem', margin: 0, color: 'var(--text-primary)' }}>{subject.name}</h2>
-            <div style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '0.2rem' }}>
+            <h2 className="quiz-header__title" style={{ fontSize: 'var(--text-lg)', fontWeight: '700', color: 'var(--color-primary)' }}>{subject.name}</h2>
+            <div style={{ color: 'var(--text-tertiary)', fontSize: 'var(--text-sm)', marginTop: '2px' }}>
               سوال {toPersianNumber(currentIndex + 1)} از {toPersianNumber(questions.length)}
             </div>
           </div>
@@ -157,35 +159,35 @@ export default function QuestionBank() {
         
         <button 
           onClick={handleToggleBookmark}
-          style={{ 
-            background: 'none', 
-            border: 'none', 
-            cursor: 'pointer', 
-            color: bookmarkedQuestions.has(currentIndex) ? '#f59e0b' : 'var(--text-secondary)',
-            fontSize: '1.5rem',
-            transition: 'color 0.2s'
-          }}
+          className="btn btn--ghost"
+          style={{ padding: 'var(--space-2)' }}
           title="نشان کردن سوال"
         >
-          {bookmarkedQuestions.has(currentIndex) ? '★' : '☆'}
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill={bookmarkedQuestions.has(currentIndex) ? "var(--color-gold)" : "none"} 
+            stroke={bookmarkedQuestions.has(currentIndex) ? "var(--color-gold)" : "currentColor"} 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
         </button>
       </div>
 
       {/* Progress Bar */}
-      <div className="quiz-progress-bar" style={{ width: '100%', height: '6px', background: 'var(--bg-secondary)', borderRadius: '3px', marginBottom: '2.5rem', overflow: 'hidden' }}>
-        <div style={{ 
-          height: '100%', 
-          background: 'var(--primary)', 
-          width: `${progressPercentage}%`,
-          transition: 'width 0.3s ease-out'
-        }}></div>
+      <div className="quiz-progress-bar">
+        <div className="quiz-progress-bar__fill" style={{ width: `${progressPercentage}%` }}></div>
       </div>
 
       {/* Question Card Area */}
       <div style={{ flex: 1 }}>
         <QuestionCard 
           question={currentQuestion}
-          questionNumber={currentIndex + 1}
+          questionNumber={toPersianNumber(currentIndex + 1)}
           totalQuestions={questions.length}
           selectedAnswer={selectedAnswers[currentIndex]}
           onSelectAnswer={handleSelectAnswer}
@@ -194,7 +196,7 @@ export default function QuestionBank() {
       </div>
 
       {/* Navigation Buttons */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '3rem', paddingTop: '1.5rem', borderTop: '1px solid var(--border-color)' }}>
+      <div className="flex justify-between items-center" style={{ marginTop: 'var(--space-8)', paddingTop: 'var(--space-4)', borderTop: '1px solid var(--glass-border)' }}>
         <button 
           className="btn btn--outline" 
           onClick={handlePrev}
@@ -205,9 +207,9 @@ export default function QuestionBank() {
         </button>
         
         <button 
-          className={`btn ${isAnswered ? 'btn--accent' : 'btn--outline'}`}
+          className={`btn ${isAnswered ? 'btn--primary' : 'btn--outline'}`}
           onClick={handleNext}
-          style={{ padding: '0.8rem 2.5rem', fontWeight: 'bold' }}
+          style={{ minWidth: '140px' }}
         >
           {isLastQuestion && isAnswered ? 'پایان آزمون' : 'سوال بعدی'}
         </button>
