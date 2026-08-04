@@ -1,71 +1,62 @@
-/* ============================================
-   DentaLearn — Design Tokens v2.0
-   Premium NeoMedical Design Language
-   ============================================ */
-
 :root {
-  /* ── Primary Palette (Indigo-Violet) ── */
-  --color-primary: #6366F1;
-  --color-primary-light: #818CF8;
-  --color-primary-lighter: #A5B4FC;
-  --color-primary-dark: #4F46E5;
-  --color-primary-darker: #4338CA;
-  --color-primary-glow: rgba(99, 102, 241, 0.15);
-  --color-primary-glow-strong: rgba(99, 102, 241, 0.3);
+  /* Primary (MongoDB Green) */
+  --color-primary: #00ED64;
+  --color-primary-light: #71F6A5;
+  --color-primary-dark: #00A548;
+  --color-primary-darker: #00684A;
+  --color-primary-glow: rgba(0, 237, 100, 0.15);
 
-  /* ── Accent (Cyan-Teal) ── */
-  --color-accent: #06B6D4;
-  --color-accent-light: #22D3EE;
-  --color-accent-dark: #0891B2;
-  --color-accent-glow: rgba(6, 182, 212, 0.15);
+  /* Accent (Blue) */
+  --color-accent: #006CFA;
+  --color-accent-light: #3D8EFF;
+  --color-accent-dark: #0050BD;
 
-  /* ── Secondary Accent (Amber/Gold) ── */
-  --color-gold: #F59E0B;
-  --color-gold-light: #FCD34D;
-  --color-gold-glow: rgba(245, 158, 11, 0.15);
+  /* Dark (MongoDB Navy) */
+  --color-dark: #001E2B;
+  --color-dark-light: #3D4F58;
+  --color-dark-lighter: #5C6C75;
 
-  /* ── Surface & Background (Light Mode) ── */
-  --color-bg: #F8FAFC;
-  --color-bg-warm: #F1F5F9;
+  /* Surface (Light Mode) */
+  --color-bg: #FFFFFF;
+  --color-bg-warm: #F5F7FA;
   --color-bg-card: #FFFFFF;
   --color-bg-elevated: #FFFFFF;
-  --color-bg-overlay: rgba(15, 23, 42, 0.6);
-  --color-bg-subtle: #E2E8F0;
+  --color-bg-overlay: rgba(0, 30, 43, 0.6);
+  --color-bg-subtle: #E7EEEC;
 
-  /* ── Semantic Colors ── */
-  --color-success: #10B981;
-  --color-success-light: #34D399;
-  --color-success-bg: rgba(16, 185, 129, 0.1);
+  /* Semantic */
+  --color-success: #00ED64;
+  --color-success-light: #71F6A5;
+  --color-success-bg: rgba(0, 237, 100, 0.08);
   --color-error: #EF4444;
   --color-error-light: #F87171;
-  --color-error-bg: rgba(239, 68, 68, 0.1);
-  --color-warning: #F59E0B;
-  --color-warning-light: #FBBF24;
-  --color-warning-bg: rgba(245, 158, 11, 0.1);
-  --color-info: #3B82F6;
-  --color-info-light: #60A5FA;
-  --color-info-bg: rgba(59, 130, 246, 0.1);
+  --color-error-bg: rgba(239, 68, 68, 0.08);
+  --color-warning: #FFC010;
+  --color-warning-bg: rgba(255, 192, 16, 0.08);
+  --color-info: #006CFA;
+  --color-info-bg: rgba(0, 108, 250, 0.08);
 
-  /* ── Hero/Dark Sections ── */
-  --color-hero-start: #0F0C29;
-  --color-hero-mid: #302B63;
-  --color-hero-end: #24243E;
+  /* Hero = dark background */
+  --color-hero-start: #001E2B;
+  --color-hero-mid: #001E2B;
+  --color-hero-end: #001E2B;
 
-  /* ── Text Colors ── */
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-tertiary: #94A3B8;
-  --text-muted: #CBD5E1;
-  --text-on-primary: #FFFFFF;
+  /* Text */
+  --text-primary: #21313C;
+  --text-secondary: #3D4F58;
+  --text-tertiary: #5C6C75;
+  --text-muted: #B8C4C2;
+  --text-on-primary: #001E2B;
   --text-on-accent: #FFFFFF;
-  --text-on-dark: #F1F5F9;
-  --text-on-dark-secondary: #94A3B8;
+  --text-on-dark: #FFFFFF;
+  --text-on-dark-secondary: #B8C4C2;
 
-  /* ── Typography ── */
+  /* Typography */
   --font-fa: 'Vazirmatn', 'Tahoma', sans-serif;
-  --font-en: 'Inter', 'Space Grotesk', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-en: 'Inter', sans-serif;
+  --font-mono: 'Source Code Pro', monospace;
 
+  /* Keep same text sizes */
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
@@ -92,29 +83,20 @@
   --leading-relaxed: 1.625;
   --leading-loose: 2;
 
-  --tracking-tight: -0.025em;
-  --tracking-normal: 0;
-  --tracking-wide: 0.025em;
-
-  /* ── Spacing (8px Grid) ── */
-  --space-0: 0;
-  --space-px: 1px;
+  /* Spacing */
+  --space-0: 0px;
   --space-0-5: 0.125rem;
   --space-1: 0.25rem;
   --space-1-5: 0.375rem;
   --space-2: 0.5rem;
   --space-2-5: 0.625rem;
   --space-3: 0.75rem;
-  --space-3-5: 0.875rem;
   --space-4: 1rem;
   --space-5: 1.25rem;
   --space-6: 1.5rem;
-  --space-7: 1.75rem;
   --space-8: 2rem;
-  --space-9: 2.25rem;
   --space-10: 2.5rem;
   --space-12: 3rem;
-  --space-14: 3.5rem;
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
@@ -123,51 +105,37 @@
   --space-36: 9rem;
   --space-40: 10rem;
 
-  /* ── Border Radius ── */
+  /* Border Radius - LARGER */
   --radius-none: 0;
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.25rem;
-  --radius-3xl: 1.5rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
   --radius-full: 9999px;
 
-  /* ── Shadows (Layered) ── */
-  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-  --shadow-2xl: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
-  --shadow-inner: inset 0 2px 4px rgba(15, 23, 42, 0.04);
-  --shadow-glow-primary: 0 0 20px rgba(99, 102, 241, 0.35), 0 0 60px rgba(99, 102, 241, 0.1);
-  --shadow-glow-accent: 0 0 20px rgba(6, 182, 212, 0.35), 0 0 60px rgba(6, 182, 212, 0.1);
-  --shadow-glow-gold: 0 0 20px rgba(245, 158, 11, 0.35);
+  /* Shadows - SUBTLE, no glow */
+  --shadow-xs: 0 1px 2px rgba(0, 30, 43, 0.04);
+  --shadow-sm: 0 1px 3px rgba(0, 30, 43, 0.06);
+  --shadow-md: 0 3px 9px rgba(0, 30, 43, 0.08);
+  --shadow-lg: 0 8px 20px rgba(0, 30, 43, 0.08);
+  --shadow-xl: 0 16px 40px rgba(0, 30, 43, 0.1);
+  --shadow-2xl: 0 24px 50px rgba(0, 30, 43, 0.12);
+  --shadow-inner: inset 0 2px 4px rgba(0, 30, 43, 0.04);
+  /* NO glow shadows */
 
-  /* ── Glass Effect ── */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-bg-strong: rgba(255, 255, 255, 0.85);
-  --glass-bg-dark: rgba(15, 23, 42, 0.6);
-  --glass-bg-dark-strong: rgba(15, 23, 42, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-border-light: rgba(255, 255, 255, 0.08);
-  --glass-blur: 16px;
-  --glass-blur-strong: 24px;
+  /* NO glass effect variables */
 
-  /* ── Borders ── */
-  --border-color: #E2E8F0;
-  --border-color-light: #F1F5F9;
-  --border-color-strong: #CBD5E1;
+  /* Borders */
+  --border-color: #E7EEEC;
+  --border-color-light: #F0F5F3;
+  --border-color-strong: #B8C4C2;
 
-  /* ── Transitions ── */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Transitions */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  --duration-75: 75ms;
-  --duration-100: 100ms;
   --duration-150: 150ms;
   --duration-200: 200ms;
   --duration-300: 300ms;
@@ -175,65 +143,45 @@
   --duration-700: 700ms;
   --duration-1000: 1000ms;
 
-  /* ── Z-Index Scale ── */
-  --z-behind: -1;
-  --z-base: 0;
-  --z-raised: 1;
-  --z-dropdown: 100;
-  --z-sticky: 200;
-  --z-navbar: 300;
-  --z-modal-overlay: 400;
-  --z-modal: 500;
-  --z-toast: 600;
-  --z-tooltip: 700;
+  /* Z-Index */
+  --z-negative: -1;
+  --z-elevated: 10;
+  --z-dropdown: 20;
+  --z-sticky: 30;
+  --z-fixed: 40;
+  --z-modal: 50;
+  --z-popover: 60;
+  --z-tooltip: 70;
 
-  /* ── Layout ── */
-  --container-xs: 475px;
-  --container-sm: 640px;
-  --container-md: 768px;
-  --container-lg: 1024px;
+  /* Layout */
   --container-xl: 1200px;
-  --container-2xl: 1400px;
-  --navbar-height: 4rem;
-  --sidebar-width: 280px;
+  --container-2xl: 1416px;
+  --navbar-height: 5rem;
 }
 
-/* ── Dark Mode Tokens ── */
+/* Dark Mode */
 [data-theme="dark"] {
-  --color-bg: #0B1120;
-  --color-bg-warm: #111827;
-  --color-bg-card: #1E293B;
-  --color-bg-elevated: #1E293B;
-  --color-bg-subtle: #334155;
+  --color-bg: #001E2B;
+  --color-bg-warm: #002A3A;
+  --color-bg-card: #003249;
+  --color-bg-elevated: #003249;
+  --color-bg-subtle: #3D4F58;
   --color-bg-overlay: rgba(0, 0, 0, 0.7);
 
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-tertiary: #64748B;
-  --text-muted: #475569;
+  --text-primary: #F5F7FA;
+  --text-secondary: #B8C4C2;
+  --text-tertiary: #5C6C75;
+  --text-muted: #3D4F58;
 
-  --border-color: #334155;
-  --border-color-light: #1E293B;
-  --border-color-strong: #475569;
-
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-bg-strong: rgba(30, 41, 59, 0.85);
-  --glass-border: rgba(148, 163, 184, 0.1);
-  --glass-border-light: rgba(148, 163, 184, 0.05);
+  --border-color: #3D4F58;
+  --border-color-light: #002A3A;
+  --border-color-strong: #5C6C75;
 
   --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-
-  --color-primary-glow: rgba(99, 102, 241, 0.2);
-  --color-accent-glow: rgba(6, 182, 212, 0.2);
-  --color-gold-glow: rgba(245, 158, 11, 0.2);
-
-  --color-success-bg: rgba(16, 185, 129, 0.15);
-  --color-error-bg: rgba(239, 68, 68, 0.15);
-  --color-warning-bg: rgba(245, 158, 11, 0.15);
-  --color-info-bg: rgba(59, 130, 246, 0.15);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 3px 9px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 20px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-2xl: 0 24px 50px rgba(0, 0, 0, 0.6);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }

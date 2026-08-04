@@ -1,188 +1,157 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { subjects, clinicalSpecialties } from '../data/subjects';
+import { subjects } from '../data/subjects';
 import { toPersianNumber } from '../utils/helpers';
 
-const Home = () => {
+export default function Home() {
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-    const revealElements = document.querySelectorAll('.reveal, .fade-up');
-    revealElements.forEach((el) => observer.observe(el));
-
-    return () => {
-      revealElements.forEach((el) => observer.unobserve(el));
-    };
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
-
-  const topBasicSciences = subjects.slice(0, 4);
-  const topClinical = clinicalSpecialties.slice(0, 3);
 
   return (
     <div className="page">
-      {/* Hero Section */}
       <section className="hero">
-        <div className="hero__particles">
-          <div className="hero__particle" style={{ top: '10%', left: '20%', width: '10px', height: '10px', animationDelay: '0s' }}></div>
-          <div className="hero__particle" style={{ top: '30%', left: '80%', width: '15px', height: '15px', animationDelay: '1s' }}></div>
-          <div className="hero__particle" style={{ top: '50%', left: '10%', width: '8px', height: '8px', animationDelay: '2s' }}></div>
-          <div className="hero__particle" style={{ top: '70%', left: '70%', width: '12px', height: '12px', animationDelay: '0.5s' }}></div>
-          <div className="hero__particle" style={{ top: '20%', left: '60%', width: '18px', height: '18px', animationDelay: '1.5s' }}></div>
-          <div className="hero__particle" style={{ top: '80%', left: '30%', width: '9px', height: '9px', animationDelay: '0.8s' }}></div>
-          <div className="hero__particle" style={{ top: '90%', left: '90%', width: '14px', height: '14px', animationDelay: '2.5s' }}></div>
-          <div className="hero__particle" style={{ top: '40%', left: '40%', width: '11px', height: '11px', animationDelay: '0.3s' }}></div>
-        </div>
-        
-        <div className="container">
-          <div className="hero__content reveal">
-            <span className="hero__badge">پلتفرم جامع آموزش دندانپزشکی</span>
+        <div className="container grid grid--2">
+          <div className="hero__content reveal stagger-1">
+            <div className="hero__badge">پلتفرم آموزش دندانپزشکی</div>
             <h1 className="hero__title">
-              مسیر موفقیت در <span className="gradient-text">دندانپزشکی</span> از اینجا شروع می‌شود
+              آمادگی کامل برای آزمون <span className="highlight">علوم پایه</span>
             </h1>
             <p className="hero__subtitle">
-              با جامع‌ترین بانک سوالات علوم پایه و بالینی، خود را برای آزمون‌ها آماده کنید و پیشرفت خود را لحظه به لحظه بسنجید.
+              دنتالرن با ارائه سوالات طبقه‌بندی شده و شبیه‌سازی آزمون‌ها، شما را در مسیر موفقیت در آزمون‌های علوم پایه و بالینی دندانپزشکی همراهی می‌کند.
             </p>
-            
             <div className="hero__actions">
-              <Link to="/dashboard" className="btn btn--primary btn--lg">شروع یادگیری</Link>
-              <Link to="/basic-sciences" className="btn btn--outline btn--lg">مشاهده دوره‌ها</Link>
+              <Link to="/quiz" className="btn btn--primary btn--lg">شروع آزمون</Link>
+              <Link to="/basic-sciences" className="btn btn--outline btn--lg">مشاهده دروس</Link>
             </div>
-            
             <div className="hero__stats">
               <div className="hero__stat">
-                <span className="hero__stat-value">{toPersianNumber(15000)}+</span>
-                <span className="hero__stat-label">سوال استاندارد</span>
+                <div className="hero__stat-value">{toPersianNumber(15000)}+</div>
+                <div className="hero__stat-label">تعداد سوالات</div>
               </div>
               <div className="hero__stat">
-                <span className="hero__stat-value">{toPersianNumber(35)}+</span>
-                <span className="hero__stat-label">مبحث تخصصی</span>
+                <div className="hero__stat-value">{toPersianNumber(5000)}+</div>
+                <div className="hero__stat-label">کاربران فعال</div>
               </div>
               <div className="hero__stat">
-                <span className="hero__stat-value">{toPersianNumber(10000)}+</span>
-                <span className="hero__stat-label">دانشجوی فعال</span>
+                <div className="hero__stat-value">{toPersianNumber(12)}</div>
+                <div className="hero__stat-label">دروس تخصصی</div>
               </div>
             </div>
+          </div>
+          <div className="hero__visual reveal stagger-2">
+            <svg viewBox="0 0 300 300" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+              <rect width="300" height="300" fill="transparent" />
+              <path d="M150 50 C200 50, 230 100, 210 150 C190 200, 160 250, 150 280 C140 250, 110 200, 90 150 C70 100, 100 50, 150 50 Z" fill="none" stroke="#00ED64" strokeWidth="8" />
+              <path d="M150 50 L150 150 M110 100 L190 100" stroke="#001E2B" strokeWidth="4" />
+              <circle cx="150" cy="150" r="30" fill="#00ED64" fillOpacity="0.2" />
+            </svg>
           </div>
         </div>
       </section>
 
-      {/* How it works */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header reveal">
-            <span className="section-header__badge">مسیر یادگیری</span>
-            <h2 className="section-header__title">چگونه کار می‌کند؟</h2>
-            <p className="section-header__desc">با سه قدم ساده، مسیر موفقیت خود را در آزمون‌های دندانپزشکی تضمین کنید.</p>
-          </div>
-          
-          <div className="grid grid--3 stagger-group reveal">
-            <div className="feature-card stagger-item">
-              <div className="feature-card__number">{toPersianNumber('01')}</div>
-              <div className="feature-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-                </svg>
-              </div>
-              <h3 className="feature-card__title">مطالعه مباحث</h3>
-              <p className="feature-card__desc">مباحث مورد نظر خود را از بین دروس علوم پایه یا بالینی انتخاب کنید و به منابع دسترسی داشته باشید.</p>
-            </div>
-            
-            <div className="feature-card stagger-item">
-              <div className="feature-card__number">{toPersianNumber('02')}</div>
-              <div className="feature-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 20h9" />
-                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                </svg>
-              </div>
-              <h3 className="feature-card__title">آزمون و تمرین</h3>
-              <p className="feature-card__desc">با شرکت در آزمون‌های شبیه‌سازی شده و سوالات تالیفی، دانش خود را محک بزنید.</p>
-            </div>
-            
-            <div className="feature-card stagger-item">
-              <div className="feature-card__number">{toPersianNumber('03')}</div>
-              <div className="feature-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 3v18h18" />
-                  <path d="M18 17V9" />
-                  <path d="M13 17V5" />
-                  <path d="M8 17v-3" />
-                </svg>
-              </div>
-              <h3 className="feature-card__title">تحلیل و پیشرفت</h3>
-              <p className="feature-card__desc">با استفاده از نمودارهای تحلیلی، نقاط قوت و ضعف خود را شناسایی کرده و پیشرفت کنید.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Basic Sciences Preview */}
       <section className="section bg-light">
         <div className="container">
-          <div className="section-header reveal">
-            <span className="section-header__badge">علوم پایه</span>
-            <h2 className="section-header__title">دروس علوم پایه دندانپزشکی</h2>
-            <p className="section-header__desc">مهم‌ترین دروس علوم پایه را با سوالات استاندارد و پاسخنامه‌های تشریحی مرور کنید.</p>
+          <div className="section-header reveal stagger-1">
+            <span className="section-header__eyebrow">چرا دنتالرن؟</span>
+            <h2 className="section-header__title">امکانات پلتفرم ما</h2>
+            <p className="section-header__desc">با ابزارهای پیشرفته دنتالرن، یادگیری خود را هدفمند و موثر کنید.</p>
           </div>
-          
-          <div className="grid grid--4 stagger-group reveal">
-            {topBasicSciences.map((subject) => (
-              <Link to={`/basic-sciences/${subject.id}`} key={subject.id} className="subject-card stagger-item">
+          <div className="grid grid--3">
+            <div className="feature-card reveal stagger-2">
+              <div className="feature-card__icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" strokeWidth="2" fill="none">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <h3 className="feature-card__title">جامع‌ترین منابع</h3>
+              <p className="feature-card__desc">دسترسی به هزاران سوال طبقه‌بندی شده از آزمون‌های سال‌های گذشته.</p>
+            </div>
+            <div className="feature-card reveal stagger-3">
+              <div className="feature-card__icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" strokeWidth="2" fill="none">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="6"></circle>
+                  <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+              </div>
+              <h3 className="feature-card__title">شبیه‌ساز آزمون</h3>
+              <p className="feature-card__desc">تجربه محیط واقعی آزمون با زمان‌بندی و شرایط استاندارد.</p>
+            </div>
+            <div className="feature-card reveal stagger-4">
+              <div className="feature-card__icon">
+                <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" strokeWidth="2" fill="none">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <h3 className="feature-card__title">تحلیل پیشرفت</h3>
+              <p className="feature-card__desc">مشاهده نمودارهای پیشرفت و شناسایی نقاط ضعف و قوت.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-header reveal stagger-1">
+            <span className="section-header__eyebrow">دروس پایه</span>
+            <h2 className="section-header__title">شروع یادگیری دروس</h2>
+          </div>
+          <div className="grid grid--4">
+            {subjects.slice(0, 4).map((subject, index) => (
+              <Link to={`/basic-sciences/${subject.id}`} key={subject.id} className={`subject-card reveal stagger-${(index % 4) + 2}`}>
                 <div className="subject-card__icon">{subject.icon}</div>
-                <h3 className="subject-card__name">{subject.name}</h3>
-                <span className="subject-card__count">{toPersianNumber(subject.questionCount)} سوال</span>
+                <div className="subject-card__content">
+                  <h3 className="subject-card__title">{subject.name}</h3>
+                  <p className="subject-card__desc">{subject.description}</p>
+                </div>
               </Link>
             ))}
           </div>
-          
-          <div className="text-center reveal" style={{ marginTop: '2rem' }}>
-            <Link to="/basic-sciences" className="btn btn--ghost">مشاهده همه دروس علوم پایه</Link>
-          </div>
         </div>
       </section>
 
-      {/* Clinical Preview */}
-      <section className="section">
+      <section className="section bg-dark">
         <div className="container">
-          <div className="section-header reveal">
-            <span className="section-header__badge">بالینی</span>
-            <h2 className="section-header__title">بخش‌های بالینی تخصصی</h2>
-            <p className="section-header__desc">کیس‌های کلینیکی و سوالات بورد تخصصی برای آمادگی کامل در بخش‌های بالینی.</p>
-          </div>
-          
-          <div className="grid grid--3 stagger-group reveal">
-            {topClinical.map((specialty) => (
-              <div key={specialty.id} className="card card--glass stagger-item">
-                <div className="card__icon card__icon--primary">{specialty.icon}</div>
-                <h3 className="card__title">{specialty.name}</h3>
-                <div className="card__desc">{toPersianNumber(specialty.caseCount)} کیس کلینیکی</div>
-                <div className="card__footer">
-                  <Link to={`/clinical/${specialty.id}`} className="btn btn--sm btn--primary">شروع بخش</Link>
-                </div>
-              </div>
-            ))}
+          <div className="grid grid--3">
+            <div className="stat reveal stagger-1">
+              <div className="stat__value">{toPersianNumber(100)}٪</div>
+              <div className="stat__label">پوشش سرفصل‌ها</div>
+            </div>
+            <div className="stat reveal stagger-2">
+              <div className="stat__value">{toPersianNumber(24)}/{toPersianNumber(7)}</div>
+              <div className="stat__label">دسترسی به منابع</div>
+            </div>
+            <div className="stat reveal stagger-3">
+              <div className="stat__value">{toPersianNumber(50)}+</div>
+              <div className="stat__label">استاد مجرب</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="cta-section reveal">
         <div className="container">
-          <div className="card card--dark text-center">
-            <h2 className="cta-section__title">آماده شروع هستید؟</h2>
-            <p className="cta-section__desc">همین امروز ثبت‌نام کنید و به جمع هزاران دانشجوی موفق دندانپزشکی بپیوندید.</p>
-            <Link to="/signup" className="btn btn--gradient btn--lg cta-section__btn">ایجاد حساب کاربری رایگان</Link>
-          </div>
+          <h2 className="cta-section__title">آماده‌اید تا شروع کنید؟</h2>
+          <p className="cta-section__desc">همین امروز به جمع هزاران دانشجوی دندانپزشکی دنتالرن بپیوندید.</p>
+          <Link to="/register" className="btn btn--primary btn--lg cta-section__btn">ثبت نام رایگان</Link>
         </div>
       </section>
     </div>
   );
-};
-
-export default Home;
+}

@@ -1,179 +1,97 @@
-/* Animations */
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(-24px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(24px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideDown {
-  from { transform: translateY(-100%); }
-  to { transform: translateY(0); }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
-}
-
-@keyframes modalSlideUp {
-  from { opacity: 0; transform: translateY(50px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scaleIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes drawLine {
-  from { stroke-dashoffset: 1000; }
-  to { stroke-dashoffset: 0; }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes correctAnswer {
   0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  50% { transform: scale(1.02); }
   100% { transform: scale(1); }
 }
 
 @keyframes wrongAnswer {
   0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-8px); }
-  75% { transform: translateX(8px); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 @keyframes progressFill {
   from { width: 0; }
-  to { width: 100%; }
 }
 
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.animate-fade-in {
+  animation: fadeIn 600ms var(--ease-out) forwards;
 }
 
-@keyframes ripple {
-  to { transform: scale(4); opacity: 0; }
+.animate-fade-in-down {
+  animation: fadeInDown 800ms var(--ease-out) forwards;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.animate-scale-in {
+  animation: scaleIn 600ms var(--ease-out) forwards;
 }
 
-@keyframes particleFloat {
-  0% { transform: translateY(0) rotate(0); opacity: 0; }
-  50% { opacity: 1; }
-  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+.animate-correct {
+  animation: correctAnswer 300ms var(--ease-out) forwards;
 }
 
-@keyframes glowPulse {
-  0%, 100% { box-shadow: 0 0 10px var(--shadow-glow-primary); }
-  50% { box-shadow: 0 0 20px var(--shadow-glow-accent); }
+.animate-wrong {
+  animation: wrongAnswer 300ms var(--ease-out) forwards;
 }
 
-/* Utility Classes */
-.animate-fade-in { animation: fadeIn var(--duration-500) var(--ease-out) forwards; }
-.animate-fade-in-up { animation: fadeInUp var(--duration-500) var(--ease-out) forwards; }
-.animate-scale-in { animation: scaleIn var(--duration-300) var(--ease-spring) forwards; }
-.animate-float { animation: float 3s ease-in-out infinite; }
-.animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite linear;
-}
-.animate-correct { animation: correctAnswer 0.4s var(--ease-spring) forwards; }
-.animate-wrong { animation: wrongAnswer 0.4s ease-in-out forwards; }
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
 
-/* Stagger Delays */
-.stagger-1 { animation-delay: 0.05s; }
-.stagger-2 { animation-delay: 0.1s; }
-.stagger-3 { animation-delay: 0.15s; }
-.stagger-4 { animation-delay: 0.2s; }
-.stagger-5 { animation-delay: 0.25s; }
-.stagger-6 { animation-delay: 0.3s; }
-.stagger-7 { animation-delay: 0.35s; }
-.stagger-8 { animation-delay: 0.4s; }
-.stagger-9 { animation-delay: 0.45s; }
-.stagger-10 { animation-delay: 0.5s; }
-.stagger-11 { animation-delay: 0.55s; }
-.stagger-12 { animation-delay: 0.6s; }
-
-/* Scroll Reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
 }
+
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.reveal--right { transform: translateX(30px); }
-.reveal--left { transform: translateX(-30px); }
-.reveal--scale { transform: scale(0.9); }
-.reveal--right.visible, .reveal--left.visible { transform: translateX(0); }
-.reveal--scale.visible { transform: scale(1); }
 
-/* Stagger Group */
-.stagger-group .stagger-item {
-  opacity: 0;
-  transform: translateY(20px);
-}
-.stagger-group.visible .stagger-item {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
-}
-.stagger-group.visible .stagger-item:nth-child(1) { transition-delay: 0.1s; }
-.stagger-group.visible .stagger-item:nth-child(2) { transition-delay: 0.2s; }
-.stagger-group.visible .stagger-item:nth-child(3) { transition-delay: 0.3s; }
-.stagger-group.visible .stagger-item:nth-child(4) { transition-delay: 0.4s; }
-.stagger-group.visible .stagger-item:nth-child(5) { transition-delay: 0.5s; }
-.stagger-group.visible .stagger-item:nth-child(6) { transition-delay: 0.6s; }
-
-/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
