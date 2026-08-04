@@ -561,6 +561,20 @@ export const sampleQuestions = {
       ],
       correctAnswer: 'a',
       explanation: 'لثه متصل و کام سخت برای تحمل نیروهای مکانیکی جویدن دارای پوشش سنگفرشی مطبق اورتو یا پاراکراتینیزه هستند.'
+    },
+    {
+      id: 'hist-104',
+      subjectId: 'histology',
+      text: 'سلول‌های سمنتوبلاست (Cementoblasts) از کدام ساختار جنینی بافت‌شناسی منشأ می‌گیرند؟',
+      year: 1400,
+      options: [
+        { id: 'a', text: 'ساک دندانی (Dental Follicle)' },
+        { id: 'b', text: 'پاپی دندانی (Dental Papilla)' },
+        { id: 'c', text: 'عضو مینایی' },
+        { id: 'd', text: 'تیغه دندانی' }
+      ],
+      correctAnswer: 'a',
+      explanation: 'ساک دندانی منشأ بافت‌های ساپورت دندان شامل سمنتوم، رباط پریودنتال (PDL) و استخوان آلوئول است.'
     }
   ],
 
@@ -593,6 +607,20 @@ export const sampleQuestions = {
       ],
       correctAnswer: 'a',
       explanation: 'نرسیدن و عدم اتصال زوائد کامی ماگزیلاری در خط وسط در هفته‌های ۷ تا ۱۰ جنینی باعث شکاف کام می‌شود.'
+    },
+    {
+      id: 'embryo-103',
+      subjectId: 'embryology',
+      text: 'غده تیروئید در دوران جنینی از فورامن سکوم (Foramen Cecum) واقع در کدام بخش منشأ می‌گیرد؟',
+      year: 1399,
+      options: [
+        { id: 'a', text: 'پشت زبان (Dorsum of Tongue)' },
+        { id: 'b', text: 'سقف دهان' },
+        { id: 'c', text: 'سینوس ماگزیلاری' },
+        { id: 'd', text: 'کمان چهارم حلقی' }
+      ],
+      correctAnswer: 'a',
+      explanation: 'جوانه تیروئید از فورامن سکوم در خط وسط پشت زبان ایجاد شده و از طریق مجرای تیرووگلوسال به محل اصلی خود در گردن مهاجرت می‌کند.'
     }
   ],
 
@@ -625,6 +653,20 @@ export const sampleQuestions = {
       ],
       correctAnswer: 'a',
       explanation: 'واکنش نوع ۴ واسطه سلولی (Cell-mediated) بوده و منحصراً توسط سلول‌های T حساس شده ایجاد می‌شود.'
+    },
+    {
+      id: 'immuno-103',
+      subjectId: 'immunology',
+      text: 'کدام سیتوکین اصلی‌ترین عامل تحریک و فعال‌سازی استئوکلاست‌ها و تخریب استخوان آلوئول در ضایعات پریودنتال است؟',
+      year: 1400,
+      options: [
+        { id: 'a', text: 'IL-1β و TNF-α' },
+        { id: 'b', text: 'IL-4' },
+        { id: 'c', text: 'IL-10' },
+        { id: 'd', text: 'اینترفرون آلفا' }
+      ],
+      correctAnswer: 'a',
+      explanation: 'سیتوکین‌های التهابی IL-1β، TNF-α و RANKL کلیدی‌ترین عوامل در تحریک استئوکلاستوژنز و جذب استخوان فک در بیماری‌های پریودنتال هستند.'
     }
   ],
 
@@ -657,6 +699,20 @@ export const sampleQuestions = {
       ],
       correctAnswer: 'a',
       explanation: 'دنتینوژنز ایمپرفکتا ناشی از جهش در ژن DSPP بوده و الگوی وراثتی اتوزومی غالب دارد.'
+    },
+    {
+      id: 'gen-103',
+      subjectId: 'genetics',
+      text: 'سندروم گاردنر (Gardner Syndrome) که با استئوم‌های متعدد فک‌ها همراه است دارای چه الگوی وراثتی است؟',
+      year: 1399,
+      options: [
+        { id: 'a', text: 'اتوزوم غالب (Autosomal Dominant)' },
+        { id: 'b', text: 'اتوزوم مغلوب' },
+        { id: 'c', text: 'وابسته به جنس' },
+        { id: 'd', text: 'مایع آمنیوتیک' }
+      ],
+      correctAnswer: 'a',
+      explanation: 'سندروم گاردنر ناشی از جهش اتوزوم غالب در ژن APC بوده و مشخصه دندانپزشکی آن دندان‌های نهفته و استئوم متعدد فک است.'
     }
   ],
 
@@ -665,7 +721,7 @@ export const sampleQuestions = {
     {
       id: 'parasit-101',
       subjectId: 'parasitology',
-      text: 'کدام تک‌یاخته مژک‌دار به صورت همزیست یا بیماری‌زا در حفره دهان و شیار لثه‌ای (پلاک دندانی) یافت می‌شود؟',
+      text: 'کدام تک‌یاخته تاژک‌دار به صورت همزیست در حفره دهان و شیار لثه‌ای (پلاک دندانی) یافت می‌شود؟',
       year: 1403,
       options: [
         { id: 'a', text: 'انتاموبا ژنژیوالیس (Entamoeba gingivalis)' },
@@ -689,6 +745,20 @@ export const sampleQuestions = {
       ],
       correctAnswer: 'a',
       explanation: 'توکسوپلاسما گوندی تک‌یاخته‌ای است که گربه میزبان نهایی آن بوده و دفع اووسیت از طریق مدفوع گربه منبع اصلی آلودگی انسان است.'
+    },
+    {
+      id: 'parasit-103',
+      subjectId: 'parasitology',
+      text: 'عامل بیماری کیست هیداتیک (Hydatid Cyst) کدام انگل است؟',
+      year: 1399,
+      options: [
+        { id: 'a', text: 'اکینوکوکوس گرنولوزوس (Echinococcus granulosus)' },
+        { id: 'b', text: 'تنیا سژیناتا' },
+        { id: 'c', text: 'فاسیولا هپاتیکا' },
+        { id: 'd', text: 'اسکاریس لومبریکوئیدس' }
+      ],
+      correctAnswer: 'a',
+      explanation: 'کرم نواری اکینوکوکوس گرنولوزوس در مرحله لاروی (متاستود) ایجاد کیست هیداتیک در کبد، ریه و نادراً استخوان فک می‌کند.'
     }
   ]
 };
